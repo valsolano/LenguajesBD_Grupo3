@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mesas</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2>Gestión de Mesas</h2>
+        <a href="/mesa/nuevo" class="btn btn-primary mb-3">Nueva Mesa</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Capacidad</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="mesa : ${mesas}">
+                    <td th:text="${mesa.idMesa}"></td>
+                    <td th:text="${mesa.capacidad}"></td>
+                    <td th:text="${mesa.idEstado}"></td>
+                    <td>
+                        <a th:href="@{/mesa/editar/{id}(id=${mesa.idMesa})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/mesa/eliminar/{id}(id=${mesa.idMesa})}" class="btn btn-sm btn-danger" 
+                           onclick="return confirm('¿Estás seguro de eliminar esta mesa?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        
+    </div>
+</body>
+</html>
