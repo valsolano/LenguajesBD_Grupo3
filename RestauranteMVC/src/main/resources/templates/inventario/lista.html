@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inventarios</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2>Gestión de Inventarios</h2>
+        <a href="/inventario/nuevo" class="btn btn-primary mb-3">Nuevo Inventario</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                    <th>Fecha Caducidad</th>
+                    <th>Proveedor</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="inventario : ${inventarios}">
+                    <td th:text="${inventario.idInventario}"></td>
+                    <td th:text="${inventario.nombre}"></td>
+                    <td th:text="${inventario.descripcion}"></td>
+                    <td th:text="${inventario.precioCompra}"></td>
+                    <td th:text="${inventario.stock}"></td>
+                    <td th:text="${inventario.fechaCaducidad}"></td>
+                    <td th:text="${inventario.idProveedor}"></td>
+                    <td th:text="${inventario.idEstado}"></td>
+                    <td>
+                        <a th:href="@{/inventario/editar/{id}(id=${inventario.idInventario})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/inventario/eliminar/{id}(id=${inventario.idInventario})}" class="btn btn-sm btn-danger" 
+                           onclick="return confirm('¿Estás seguro de eliminar este inventario?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Gestión de Proveedores</h2>
+        <a href="/proveedor/nuevo" class="btn btn-primary mb-3">Nuevo Proveedor</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Email</th>
+                    <th>Dirección</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="proveedor : ${proveedores}">
+                    <td th:text="${proveedor.idProveedor}"></td>
+                    <td th:text="${proveedor.nombre}"></td>
+                    <td th:text="${proveedor.telefono}"></td>
+                    <td th:text="${proveedor.email}"></td>
+                    <td th:text="${proveedor.idDireccion}"></td>
+                    <td th:text="${proveedor.idEstado}"></td>
+                    <td>
+                        <a th:href="@{/proveedor/editar/{id}(id=${proveedor.idProveedor})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/proveedor/eliminar/{id}(id=${proveedor.idProveedor})}" class="btn btn-sm btn-danger" 
+                           onclick="return confirm('¿Estás seguro de eliminar este proveedor?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

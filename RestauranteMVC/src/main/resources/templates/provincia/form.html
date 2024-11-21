@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Provincia Form</title>
+    </head>
+    <body>
+        <div th:fragment="mainContent">
+            <h2 th:text="${provincia.idProvincia == null ? 'Nueva Provincia' : 'Editar Provincia'}"></h2>
+
+            <form th:action="@{${actionUrl}}" th:object="${provincia}" method="post">
+<!--
+                <div class="mb-3">
+                    <label class="form-label">IdProvincia</label>
+                    <input type="text" class="form-control" th:field="*{idProvincia}" required>
+                </div>
+                -->
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" required>
+                </div>
+
+                
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/provincia" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

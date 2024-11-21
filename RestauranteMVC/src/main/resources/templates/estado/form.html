@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Estado Form</title>
+    </head>
+    <body>
+        <div th:fragment="mainContent">
+            <h2 th:text="${estado.idEstado == 0 ? 'Nuevo Estado' : 'Editar Estado'}"></h2>
+
+            <form th:action="@{${actionUrl}}" th:object="${estado}" method="post">
+
+                <div class="mb-3" th:if="${estado.idEstado != 0}">
+                    <label class="form-label">IdEstado</label>
+                    <input type="text" class="form-control" th:field="*{idEstado}" required >
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tipo Estado</label>
+                    <input type="text" class="form-control" th:field="*{tipoEstado}" required>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/estado" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

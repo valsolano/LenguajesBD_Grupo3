@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Distrito Form</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2 th:text="${distrito.idDistrito == null ? 'Nuevo Distrito' : 'Editar Distrito'}"></h2>
+        
+        <form th:action="@{${actionUrl}}" th:object="${distrito}" method="post">
+            
+           <!--
+            <div class="mb-3">
+              <label class="form-label">IdDistrito</label>
+              <input type="text" class="form-control" th:field="*{idDistrito}" required>
+          </div>
+           -->
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" th:field="*{nombre}" required>
+            </div>
+           
+            <div class="mb-3">
+                <label class="form-label">IdCanton</label>
+                <textarea class="form-control" th:field="*{idCanton}" required></textarea>
+            </div>
+
+            
+            
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/distrito" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

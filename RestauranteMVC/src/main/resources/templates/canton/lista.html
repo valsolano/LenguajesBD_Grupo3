@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Canton</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2>Gestión de Cantones</h2>
+        <a href="/canton/nuevo" class="btn btn-primary mb-3">Nuevo Canton</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Provincia</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="canton : ${cantones}">
+                    <td th:text="${canton.idCanton}"></td>
+                    <td th:text="${canton.nombre}"></td>
+                    <td th:text="${canton.idProvincia}"></td>
+                    <td th:text="${canton.idEstado}"></td>
+                    <td>
+                        <a th:href="@{/canton/editar/{id}(id=${canton.idCanton})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/canton/eliminar/{id}(id=${canton.idCanton})}" class="btn btn-sm btn-danger" 
+                           onclick="return confirm('¿Estás seguro de eliminar este canton?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

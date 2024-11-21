@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Provincias</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2>Gestión de Provincias</h2>
+        <a href="/provincia/nuevo" class="btn btn-primary mb-3">Nueva Provincia</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="provincia : ${provincias}">
+                    <td th:text="${provincia.idProvincia}"></td>
+                    <td th:text="${provincia.nombre}"></td>
+                    <td th:text="${provincia.idEstado}"></td>
+                    <td>
+                        <a th:href="@{/provincia/editar/{id}(id=${provincia.idProvincia})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/provincia/eliminar/{id}(id=${provincia.idProvincia})}" class="btn btn-sm btn-danger" 
+                           onclick="return confirm('¿Estás seguro de eliminar este provincia?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

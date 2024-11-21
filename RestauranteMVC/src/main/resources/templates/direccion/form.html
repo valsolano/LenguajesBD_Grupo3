@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Direccion Form</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2 th:text="${direccion.idDireccion == null ? 'Nueva Direccion' : 'Editar Direccion'}"></h2>
+        
+        <form th:action="@{${actionUrl}}" th:object="${direccion}" method="post">
+            
+            <!--
+            <div class="mb-3">
+              <label class="form-label">IdDireccion</label>
+              <input type="text" class="form-control" th:field="*{idDireccion}" required>
+          </div>
+            -->
+
+            <div class="mb-3">
+                <label class="form-label">IdProvincia</label>
+                <input type="text" class="form-control" th:field="*{idProvincia}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">IdCanton</label>
+                <input type="text" class="form-control" th:field="*{idCanton}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">IdDistrito</label>
+                <input type="text" class="form-control" th:field="*{idDistrito}" required>
+            </div>
+
+           
+            
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/direccion" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

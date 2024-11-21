@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Canton Form</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2 th:text="${canton.idCanton == null ? 'Nuevo Canton' : 'Editar Canton'}"></h2>
+        
+        <form th:action="@{${actionUrl}}" th:object="${canton}" method="post">
+            <!-- comment 
+            <div class="mb-3">
+              <label class="form-label">IdCanton</label>
+              <input type="text" class="form-control" th:field="*{idCanton}" required>
+          </div>-->
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" th:field="*{nombre}" required>
+            </div>
+            
+          
+            <div class="mb-3">
+                <label class="form-label">Provincia</label>
+                <textarea class="form-control" th:field="*{idProvincia}" required></textarea>
+            </div>
+
+            
+            
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/canton" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

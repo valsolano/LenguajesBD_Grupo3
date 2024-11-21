@@ -1,0 +1,17 @@
+html, body {
+    height: 100%;
+}
+.container-fluid {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+}
+.sidebar {
+    height: 100vh; /* Full height for sidebar */
+    position: sticky;
+    top: 0;
+    overflow-y: auto; /* Scroll within sidebar if content exceeds viewport */
+}
+.sticky-top {
+    top: 20px;
+}
+

@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Proveedor Form</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2 th:text="${proveedor.idProveedor == null ? 'Nuevo Proveedor' : 'Editar Proveedor'}"></h2>
+        
+        <form th:action="@{${actionUrl}}" th:object="${proveedor}" method="post">
+            
+            <!--
+            <div class="mb-3">
+              <label class="form-label">IdProveedor</label>
+              <input type="text" class="form-control" th:field="*{idProveedor}" required>
+          </div>
+            -->
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" th:field="*{nombre}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Teléfono</label>
+                <input type="text" class="form-control" th:field="*{telefono}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" th:field="*{email}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Dirección</label>
+                <textarea class="form-control" th:field="*{idDireccion}" required></textarea>
+            </div>
+
+           
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/proveedor" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
