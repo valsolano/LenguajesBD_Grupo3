@@ -1,7 +1,7 @@
 # LenguajesBD_Grupo7
 
-Sistema de Gestion Interna para Restaurante
-Lenguajes de Bases de Datos
+**Sistema de Gestion Interna para Restaurante<br>**
+Lenguajes de Bases de Datos<br>
 Proyecto Final<br>
 
 Alondra María Cabezas Mora <br>
