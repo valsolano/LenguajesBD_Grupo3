@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Restaurantes</title>
+    </head>
+    <body>
+        <div th:fragment="mainContent">
+            <h2>Gestión de Restaurantes</h2>
+            <a href="/restaurante/nuevo" class="btn btn-primary mb-3">Nuevo Restaurante</a>
+            <div class="table-responsive mb-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Teléfono</th>
+                            <th>Correo</th>
+                            <th>Dirección</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="restaurante : ${restaurantes}">
+                            <td th:text="${restaurante.idRestaurante}"></td>
+                            <td th:text="${restaurante.nombre}"></td>
+                            <td th:text="${restaurante.telefono}"></td>
+                            <td th:text="${restaurante.correo}"></td>
+                            <td th:text="${restaurante.direccion}"></td>
+                            <td th:text="${restaurante.idEstado}"></td>
+                            <td>
+                                <a th:href="@{/restaurante/editar/{id}(id=${restaurante.idRestaurante})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/restaurante/eliminar/{id}(id=${restaurante.idRestaurante})}" class="btn btn-sm btn-danger" 
+                                   onclick="return confirm('¿Estás seguro de eliminar este restaurante?')">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

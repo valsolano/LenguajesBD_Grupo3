@@ -21,7 +21,7 @@ public class ProvinciaController {
 
     @Autowired
     private ProvinciaService provinciaService;
-    
+
     @GetMapping
     public String provincia(Model model) {
         model.addAttribute("provincias", provinciaService.obtenerProvincias());
@@ -36,7 +36,6 @@ public class ProvinciaController {
         model.addAttribute("actionUrl", "/provincia/guardar");
         return "layout";
     }
-    
 
     @PostMapping("/guardar")
     public String agregarProvincia(@ModelAttribute Provincia provincia, Model model) {
@@ -44,7 +43,7 @@ public class ProvinciaController {
         provinciaService.insertarProvincia(provincia.getNombre());
         return "redirect:/direccion";
     }
-    
+
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Integer id, Model model) {
         model.addAttribute("provincia", provinciaService.obtenerProvinciaPorId(id));
@@ -52,20 +51,17 @@ public class ProvinciaController {
         model.addAttribute("actionUrl", "/provincia/actualizar");
         return "layout";
     }
-    
+
     @PostMapping("/actualizar")
     public String actualizarProvincia(@ModelAttribute Provincia provincia, Model model) {
-        provinciaService.actualizarProvincia(provincia.getIdProvincia(), provincia.getNombre(),provincia.getIdEstado());
+        provinciaService.actualizarProvincia(provincia.getIdProvincia(), provincia.getNombre(), provincia.getIdEstado());
         return "redirect:/direccion";
     }
 
-   
     @GetMapping("/eliminar/{id}")
     public String eliminarProvincia(@PathVariable Integer id, Model model) {
         provinciaService.eliminarProvincia(id);
         return "redirect:/direccion";
     }
-    
 
-  
 }

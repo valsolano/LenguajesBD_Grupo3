@@ -1,9 +1,7 @@
-
 package com.restaurante.restaurante.Domain;
 
-
 public class Mesa {
-    
+
     private int idMesa;
     private int capacidad;
     private int idEstado;
@@ -31,6 +29,5 @@ public class Mesa {
     public void setIdEstado(int idEstado) {
         this.idEstado = idEstado;
     }
-    
-    
+
 }

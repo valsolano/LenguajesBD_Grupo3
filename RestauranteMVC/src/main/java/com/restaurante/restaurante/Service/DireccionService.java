@@ -29,7 +29,7 @@ public class DireccionService {
             direccion.setIdProvincia(rs.getInt("id_provincia"));
             direccion.setIdCanton(rs.getInt("id_canton"));
             direccion.setIdDistrito(rs.getInt("id_distrito"));
-            direccion.setIdDistrito(rs.getInt("direccion"));
+            direccion.setDireccion(rs.getString("direccion"));
             direccion.setIdEstado(rs.getInt("id_estado"));
             return direccion;
         });

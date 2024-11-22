@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Direccion Form</title>
-</head>
-<body>
-    <div th:fragment="mainContent">
-        <h2 th:text="${direccion.idDireccion == null ? 'Nueva Direccion' : 'Editar Direccion'}"></h2>
-        
-        <form th:action="@{${actionUrl}}" th:object="${direccion}" method="post">
-            
-            <!--
-            <div class="mb-3">
-              <label class="form-label">IdDireccion</label>
-              <input type="text" class="form-control" th:field="*{idDireccion}" required>
-          </div>
-            -->
+    <head>
+        <title>Direccion Form</title>
+    </head>
+    <body>
+        <div th:fragment="mainContent">
+            <h2 th:text="${direccion.idDireccion == 0 ? 'Nueva Direccion' : 'Editar Direccion'}"></h2>
 
-            <div class="mb-3">
-                <label class="form-label">IdProvincia</label>
-                <input type="text" class="form-control" th:field="*{idProvincia}" required>
-            </div>
-            
-            <div class="mb-3">
-                <label class="form-label">IdCanton</label>
-                <input type="text" class="form-control" th:field="*{idCanton}" required>
-            </div>
-            
-            <div class="mb-3">
-                <label class="form-label">IdDistrito</label>
-                <input type="text" class="form-control" th:field="*{idDistrito}" required>
-            </div>
+            <form th:action="@{${actionUrl}}" th:object="${direccion}" method="post">
 
-           
-            
-            <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="/direccion" class="btn btn-secondary">Cancelar</a>
-        </form>
-    </div>
-</body>
+
+                <div class="mb-3" th:if="${direccion.idDireccion != 0}">
+                    <label class="form-label" th:if="${direccion.idDireccion != 0}">ID Direccion</label>
+                    <input type="text" class="form-control" th:field="*{idDireccion}" required>
+                </div>
+
+
+                <div class="mb-3">
+                    <label class="form-label">Provincia</label>
+                    <input type="text" class="form-control" th:field="*{idProvincia}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Canton</label>
+                    <input type="text" class="form-control" th:field="*{idCanton}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Distrito</label>
+                    <input type="text" class="form-control" th:field="*{idDistrito}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Direccion detallada</label>
+                    <textarea type="text" class="form-control" rows="3" th:field="*{direccion}" required></textarea>
+
+                </div>
+
+                <div class="mb-3" th:if="${direccion.idDireccion != 0}">
+                    <label class="form-label" >ID Estado</label>
+                    <input type="text" class="form-control" th:field="*{idEstado}" required>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/direccion" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
 </html>

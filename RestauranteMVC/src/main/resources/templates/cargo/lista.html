@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cargos</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2>Gestión de Cargos</h2>
+        <a href="/cargo/nuevo" class="btn btn-primary mb-3">Nuevo Cargo</a>
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cargo : ${cargos}">
+                    <td th:text="${cargo.idCargo}"></td>
+                    <td th:text="${cargo.nombre}"></td>
+                    <td th:text="${cargo.descripcion}"></td>
+                    <td th:text="${cargo.idEstado}"></td>
+                    <td>
+                        <a th:href="@{/cargo/editar/{id}(id=${cargo.idCargo})}" class="btn btn-sm btn-warning">Editar</a>
+                        <a th:href="@{/cargo/eliminar/{id}(id=${cargo.idCargo})}" class="btn btn-sm btn-danger" 
+                           onclick="return confirm('¿Estás seguro de eliminar este cargo?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

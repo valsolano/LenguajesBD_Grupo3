@@ -9,13 +9,12 @@ package com.restaurante.restaurante.Domain;
  * @author Cesar_Camacho
  */
 public class Distrito {
-    
+
     private int idDistrito;
     private String nombre;
-     private int idCanton;
+    private int idCanton;
     private int idEstado;
 
-    
     public int getIdDistrito() {
         return idDistrito;
     }
@@ -24,7 +23,6 @@ public class Distrito {
         this.idDistrito = idDistrito;
     }
 
-    
     public String getNombre() {
         return nombre;
     }
@@ -32,7 +30,7 @@ public class Distrito {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public int getIdCanton() {
         return idCanton;
     }

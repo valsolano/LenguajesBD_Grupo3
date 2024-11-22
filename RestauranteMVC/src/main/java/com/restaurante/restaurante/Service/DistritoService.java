@@ -16,14 +16,13 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 @Service
 public class DistritoService {
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    
-    
-     public List<Distrito> obtenerDistritos() {
+
+    public List<Distrito> obtenerDistritos() {
         String sql = "SELECT ID_DISTRITO, NOMBRE, ID_CANTON, ID_ESTADO FROM FIDE_DISTRITO_TB";
-        
+
         return jdbcTemplate.query(sql, (rs, rowNum) -> {
             Distrito distrito = new Distrito();
             distrito.setIdDistrito(rs.getInt("id_distrito"));
@@ -33,24 +32,24 @@ public class DistritoService {
             return distrito;
         });
     }
-    
-      public Distrito obtenerDistritoPorId(int id) {
+
+    public Distrito obtenerDistritoPorId(int id) {
         String sql = "SELECT ID_DISTRITO, NOMBRE, ID_CANTON, ID_ESTADO FROM FIDE_DISTRITO_TB WHERE ID_DISTRITO = ?";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Distrito.class), id);
     }
 
-    public void insertarDistrito( String nombre,Integer idCanton) {
+    public void insertarDistrito(String nombre, int idCanton) {
         String sql = "{call INSERTAR_DISTRITO_SP(?, ?)}";
 
         jdbcTemplate.update(connection -> {
             var callableStatement = connection.prepareCall(sql);
             callableStatement.setString(1, nombre);
-            callableStatement.setInt(2, idCanton.intValue());
+            callableStatement.setInt(2, idCanton);
             return callableStatement;
         });
     }
 
-    public void actualizarDistrito(Integer idDistrito,String nombre,Integer idCanton, Integer idEstado) {
+    public void actualizarDistrito(Integer idDistrito, String nombre, Integer idCanton, Integer idEstado) {
         String sql = "{call ACTUALIZAR_DISTRITO_SP(?, ?, ?, ?)}";
 
         jdbcTemplate.update(connection -> {
@@ -72,5 +71,5 @@ public class DistritoService {
             return callableStatement;
         });
     }
-    
+
 }

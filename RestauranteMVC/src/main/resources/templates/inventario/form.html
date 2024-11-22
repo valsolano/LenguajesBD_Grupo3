@@ -5,16 +5,16 @@
     </head>
     <body>
         <div th:fragment="mainContent">
-            <h2 th:text="${inventario.idInventario == null ? 'Nuevo Inventario' : 'Editar Inventario'}"></h2>
+            <h2 th:text="${inventario.idInventario == 0 ? 'Nuevo Inventario' : 'Editar Inventario'}"></h2>
 
             <form th:action="@{${actionUrl}}" th:object="${inventario}" method="post">
 
-                <!--
-                <div class="mb-3">
+                
+                <div class="mb-3" th:if="${inventario.idInventario != 0}">
                     <label class="form-label">IdInventario</label>
                     <input type="text" class="form-control" th:field="*{idInventario}" required>
                 </div>
-                -->
+                
 
                 <div class="mb-3">
                     <label class="form-label">Nombre</label>
@@ -36,23 +36,25 @@
                     <input type="text" class="form-control" th:field="*{stock}" required>
                 </div>
 
-                <!--
-                <div class="mb-3">
-                    <label class="form-label">FechaCaducidad</label>
-                    <input type="text" class="form-control" th:field="*{fechaCaducidad}" required>
-                </div>
-                -->
+                
 
                 <div class="mb-3">
                     <label class="form-label">Fecha de Caducidad</label>
-                    <input type="date" class="form-control" th:field="*{fechaCaducidad}" required>
+                    <input type="date" class="form-control" th:field="*{fechaCaducidad}">
                 </div>
 
 
                 <div class="mb-3">
                     <label class="form-label">Proveedor</label>
-                    <textarea class="form-control" th:field="*{idProveedor}" required></textarea>
+                    <input class="form-control" th:field="*{idProveedor}" required>
                 </div>
+                
+                <div class="mb-3" th:if="${inventario.idInventario != 0}">
+                    <label class="form-label">IdEstado</label>
+                    <input type="text" class="form-control" th:field="*{idEstado}" required>
+                </div>
+                
+                
 
 
 

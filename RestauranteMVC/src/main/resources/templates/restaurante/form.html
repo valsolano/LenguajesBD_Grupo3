@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Restaurante Form</title>
+    </head>
+    <body>
+        <div th:fragment="mainContent">
+            <h2 th:text="${restaurante.idRestaurante == null ? 'Nuevo Restaurante' : 'Editar Restaurante'}"></h2>
+
+            <form th:action="@{${actionUrl}}" th:object="${restaurante}" method="post">
+
+
+                <div class="mb-3" th:if="${restaurante.idRestaurante != null}">
+                    <label class="form-label" >ID Restaurante</label>
+                    <input type="text" class="form-control" th:field="*{idRestaurante}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-control" th:field="*{nombre}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" th:field="*{telefono}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Correo</label>
+                    <input type="email" class="form-control" th:field="*{correo}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Dirección</label>
+                    <textarea class="form-control" th:field="*{direccion}" required></textarea>
+                </div>
+
+                <div class="mb-3" th:if="${restaurante.idRestaurante != null}">
+                    <label class="form-label" >ID Estado</label>
+                    <input type="text" class="form-control" th:field="*{idEstado}" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a href="/restaurante" class="btn btn-secondary">Cancelar</a>
+            </form>
+        </div>
+    </body>
+</html>

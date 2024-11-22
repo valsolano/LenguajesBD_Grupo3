@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulario de Cargos</title>
+</head>
+<body>
+    <div th:fragment="mainContent">
+        <h2 th:text="${cargo.idCargo == 0 ? 'Nuevo Cargo' : 'Editar Cargo'}"></h2>
+        
+        <form th:action="@{${actionUrl}}" th:object="${cargo}" method="post">
+
+            <div class="mb-3" th:if="${cargo.idCargo != 0}">
+                <label class="form-label" >ID Cargo</label>
+                <input type="text" class="form-control" th:field="*{idCargo}" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" th:field="*{nombre}" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label">Descripcion</label>
+                <input class="form-control" th:field="*{descripcion}" required>
+            </div>
+            
+            <div class="mb-3" th:if="${cargo.idCargo != 0}">
+                <label class="form-label" >ID Estado</label>
+                <input type="text" class="form-control" th:field="*{idEstado}" required>
+            </div>
+
+            
+            
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <a href="/cargo" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>
