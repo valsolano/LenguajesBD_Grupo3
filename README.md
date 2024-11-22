@@ -1,4 +1,4 @@
-# LenguajesBD_Grupo7
+# LenguajesBD_Grupo3
 
 **Sistema de Gestion Interna para Restaurante<br>**
 Lenguajes de Bases de Datos<br>
