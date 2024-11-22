@@ -68,7 +68,7 @@ public class DireccionController {
         return "layout";
     }
 
-    @PostMapping("direccion/actualizar")
+    @PostMapping("/actualizar")
     public String actualizarDireccion(@ModelAttribute Direccion direccion, Model model) {
         direccionService.actualizarDireccion(direccion.getIdDireccion(), direccion.getIdProvincia(), direccion.getIdCanton(), direccion.getIdDistrito(), direccion.getIdEstado(), direccion.getDireccion());
         return "redirect:/direccion";

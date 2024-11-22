@@ -1,119 +1,122 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Direcciones</title>
-</head>
-<body>
-    <div th:fragment="mainContent">
-        <h2>Gestión de Direcciones</h2>
-        <a href="/direccion/nuevo" class="btn btn-primary mb-3">Nueva Direccion</a>
-        
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Provincia</th>
-                    <th>Canton</th>
-                    <th>Distrito</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="direccion : ${direcciones}">
-                    <td th:text="${direccion.idDireccion}"></td>
-                    <td th:text="${direccion.idProvincia}"></td>
-                    <td th:text="${direccion.idCanton}"></td>
-                    <td th:text="${direccion.idDistrito}"></td>
-                    <td th:text="${direccion.idEstado}"></td>
-                    <td>
-                        <a th:href="@{/direccion/editar/{id}(id=${direccion.idDireccion})}" class="btn btn-sm btn-warning">Editar</a>
-                        <a th:href="@{/direccion/eliminar/{id}(id=${direccion.idDireccion})}" class="btn btn-sm btn-danger" 
-                           onclick="return confirm('¿Estás seguro de eliminar este proveedor?')">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <h2>Gestión de Provincias</h2>
-        <a href="/provincia/nuevo" class="btn btn-primary mb-3">Nueva Provincia</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="provincia : ${provincias}">
-                    <td th:text="${provincia.idProvincia}"></td>
-                    <td th:text="${provincia.nombre}"></td>
-                    <td>
-                        <a th:href="@{/provincia/editar/{id}(id=${provincia.idProvincia})}" class="btn btn-sm btn-warning">Editar</a>
-                        <a th:href="@{/provincia/eliminar/{id}(id=${provincia.idProvincia})}" class="btn btn-sm btn-danger"
-                           onclick="return confirm('¿Estás seguro de eliminar esta provincia?')">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <head>
+        <title>Direcciones</title>
+    </head>
+    <body>
+        <div th:fragment="mainContent">
+            <h2>Gestión de Direcciones</h2>
+            <a href="/direccion/nuevo" class="btn btn-primary mb-3">Nueva Direccion</a>
+            <div class="table-responsive mb-3">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Provincia</th>
+                            <th>Canton</th>
+                            <th>Distrito</th>
+                            <th>Direccion</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="direccion : ${direcciones}">
+                            <td th:text="${direccion.idDireccion}"></td>
+                            <td th:text="${direccion.idProvincia}"></td>
+                            <td th:text="${direccion.idCanton}"></td>
+                            <td th:text="${direccion.idDistrito}"></td>
+                            <td th:text="${direccion.direccion}"></td>
+                            <td th:text="${direccion.idEstado}"></td>
+                            <td>
+                                <a th:href="@{/direccion/editar/{id}(id=${direccion.idDireccion})}" class="btn btn-sm btn-warning">Editar</a>
+                                <a th:href="@{/direccion/eliminar/{id}(id=${direccion.idDireccion})}" class="btn btn-sm btn-danger" 
+                                   onclick="return confirm('¿Estás seguro de eliminar esta dirección?')">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-        <h2>Gestión de Cantones</h2>
-        <a href="/canton/nuevo" class="btn btn-primary mb-3">Nuevo Cantón</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Provincia</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="canton : ${cantones}">
-                    <td th:text="${canton.idCanton}"></td>
-                    <td th:text="${canton.nombre}"></td>
-                    <td th:text="${canton.idProvincia}"></td>
-                    <td th:text="${canton.idEstado}"></td>
-                    <td>
-                        <a th:href="@{/canton/editar/{id}(id=${canton.idCanton})}" class="btn btn-sm btn-warning">Editar</a>
-                        <a th:href="@{/canton/eliminar/{id}(id=${canton.idCanton})}" class="btn btn-sm btn-danger"
-                           onclick="return confirm('¿Estás seguro de eliminar este cantón?')">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+            <h2>Gestión de Provincias</h2>
+            <a href="/provincia/nuevo" class="btn btn-primary mb-3">Nueva Provincia</a>
 
-        <h2>Gestión de Distritos</h2>
-        <a href="/distrito/nuevo" class="btn btn-primary mb-3">Nuevo Distrito</a>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Cantón</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="distrito : ${distritos}">
-                    <td th:text="${distrito.idDistrito}"></td>
-                    <td th:text="${distrito.nombre}"></td>
-                    <td th:text="${distrito.idCanton}"></td>
-                    <td th:text="${distrito.idEstado}"></td>
-                    <td>
-                        <a th:href="@{/distrito/editar/{id}(id=${distrito.idDistrito})}" class="btn btn-sm btn-warning">Editar</a>
-                        <a th:href="@{/distrito/eliminar/{id}(id=${distrito.idDistrito})}" class="btn btn-sm btn-danger"
-                           onclick="return confirm('¿Estás seguro de eliminar este distrito?')">Eliminar</a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</body>
-</html>
-    </div>
-</body>
+            <table class="table table-striped mb-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="provincia : ${provincias}">
+                        <td th:text="${provincia.idProvincia}"></td>
+                        <td th:text="${provincia.nombre}"></td>
+                        <td th:text="${provincia.idEstado}"></td>
+                        <td>
+                            <a th:href="@{/provincia/editar/{id}(id=${provincia.idProvincia})}" class="btn btn-sm btn-warning">Editar</a>
+                            <a th:href="@{/provincia/eliminar/{id}(id=${provincia.idProvincia})}" class="btn btn-sm btn-danger" 
+                               onclick="return confirm('¿Estás seguro de eliminar esta provincia?')">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Gestión de Cantones</h2>
+            <a href="/canton/nuevo" class="btn btn-primary mb-3">Nuevo Cantón</a>
+            <table class="table table-striped mb-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Provincia</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="canton : ${cantones}">
+                        <td th:text="${canton.idCanton}"></td>
+                        <td th:text="${canton.nombre}"></td>
+                        <td th:text="${canton.idProvincia}"></td>
+                        <td th:text="${canton.idEstado}"></td>
+                        <td>
+                            <a th:href="@{/canton/editar/{id}(id=${canton.idCanton})}" class="btn btn-sm btn-warning">Editar</a>
+                            <a th:href="@{/canton/eliminar/{id}(id=${canton.idCanton})}" class="btn btn-sm btn-danger"
+                               onclick="return confirm('¿Estás seguro de eliminar este cantón?')">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Gestión de Distritos</h2>
+            <a href="/distrito/nuevo" class="btn btn-primary mb-3">Nuevo Distrito</a>
+            <table class="table table-striped mb-3">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Cantón</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="distrito : ${distritos}">
+                        <td th:text="${distrito.idDistrito}"></td>
+                        <td th:text="${distrito.nombre}"></td>
+                        <td th:text="${distrito.idCanton}"></td>
+                        <td th:text="${distrito.idEstado}"></td>
+                        <td>
+                            <a th:href="@{/distrito/editar/{id}(id=${distrito.idDistrito})}" class="btn btn-sm btn-warning">Editar</a>
+                            <a th:href="@{/distrito/eliminar/{id}(id=${distrito.idDistrito})}" class="btn btn-sm btn-danger"
+                               onclick="return confirm('¿Estás seguro de eliminar este distrito?')">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

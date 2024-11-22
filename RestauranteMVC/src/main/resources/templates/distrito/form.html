@@ -5,16 +5,16 @@
 </head>
 <body>
     <div th:fragment="mainContent">
-        <h2 th:text="${distrito.idDistrito == null ? 'Nuevo Distrito' : 'Editar Distrito'}"></h2>
+        <h2 th:text="${distrito.idDistrito == 0 ? 'Nuevo Distrito' : 'Editar Distrito'}"></h2>
         
         <form th:action="@{${actionUrl}}" th:object="${distrito}" method="post">
             
-           <!--
-            <div class="mb-3">
-              <label class="form-label">IdDistrito</label>
+           
+            <div class="mb-3" th:if="${distrito.idDistrito != 0}">
+              <label class="form-label">ID Distrito</label>
               <input type="text" class="form-control" th:field="*{idDistrito}" required>
           </div>
-           -->
+           
 
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
@@ -22,14 +22,19 @@
             </div>
            
             <div class="mb-3">
-                <label class="form-label">IdCanton</label>
-                <textarea class="form-control" th:field="*{idCanton}" required></textarea>
+                <label class="form-label">ID Canton</label>
+                <input class="form-control" th:field="*{idCanton}" required>
             </div>
+            
+            <div class="mb-3" th:if="${distrito.idDistrito != 0}">
+              <label class="form-label">ID Estado</label>
+              <input type="text" class="form-control" th:field="*{idEstado}" required>
+          </div>
 
             
             
             <button type="submit" class="btn btn-primary">Guardar</button>
-            <a href="/distrito" class="btn btn-secondary">Cancelar</a>
+            <a href="/direccion" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
 </body>

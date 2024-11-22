@@ -115,9 +115,9 @@
                             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
-                            <ul class="nav flex-column">
+                            <ul class="nav flex-column pt-3">
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="#">
+                                    <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/">
                                         <i class="fa-solid fa-house"></i>
                                         Dashboard
                                     </a>
@@ -129,8 +129,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <i class="fa-solid fa-bowl-food"></i>
+                                    <a class="nav-link d-flex align-items-center gap-2" href="/categoria">
+                                        <i class="fa-solid fa-burger"></i>
                                         Platillos
                                     </a>
                                 </li>
@@ -153,7 +153,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="/empleado">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="/cargo">
                                         <i class="fa-solid fa-address-card"></i>
                                         Empleados
                                     </a>
@@ -176,12 +176,7 @@
                                         Reportes
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex align-items-center gap-2" href="#">
-                                        <i class="fa-solid fa-utensils"></i>
-                                        Restaurantes
-                                    </a>
-                                </li>
+                                
                             </ul>
 
                             <hr class="my-3">
@@ -189,7 +184,7 @@
                             <ul class="nav flex-column mb-auto">
                                 <li class="nav-item">
                                     <a class="nav-link d-flex align-items-center gap-2" href="/direccion">
-                                        <i class="fa-solid fa-utensils"></i>
+                                        <i class="fa-solid fa-map"></i>
                                         Direcciones
                                     </a>
                                 </li>
@@ -198,6 +193,12 @@
                                     <a class="nav-link d-flex align-items-center gap-2" href="/estado">
                                         <i class="fa-solid fa-gear"></i>
                                         Estado
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link d-flex align-items-center gap-2" href="/restaurante">
+                                        <i class="fa-solid fa-utensils"></i>
+                                        Restaurantes
                                     </a>
                                 </li>
 
@@ -213,11 +214,11 @@
                 </div>
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
                         <div class="btn-toolbar mb-2 mb-md-0">
                         </div>
-                        <div class="container mt-4">
-                            <div th:replace="${content} :: mainContent"></div>
+                        <div class="container mt-4 px-4 mb-4">
+                            <div th:replace="${content} :: mainContent" ></div>
                             <!-- Contenido dinámico -->
                         </div>
                     </div>

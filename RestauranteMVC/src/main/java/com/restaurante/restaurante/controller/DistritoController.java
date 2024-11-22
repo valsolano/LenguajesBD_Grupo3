@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 @Controller
 @RequestMapping("/distrito")
 public class DistritoController {
-    
+
     @Autowired
     private DistritoService distritoService;
-    
-    
+
     @GetMapping
     public String distrito(Model model) {
         model.addAttribute("distritos", distritoService.obtenerDistritos());
@@ -40,35 +40,32 @@ public class DistritoController {
         model.addAttribute("actionUrl", "/distrito/guardar");
         return "layout";
     }
-    
+
     @PostMapping("/guardar")
     public String agregarDistrito(@ModelAttribute Distrito distrito, Model model) {
         System.out.println("entrooo agregar");
-        distritoService.insertarDistrito(distrito.getNombre(),distrito.getIdCanton());
+        distritoService.insertarDistrito(distrito.getNombre(), distrito.getIdCanton());
         return "redirect:/direccion";
     }
-    
-   @GetMapping("/editar/{id}")
+
+    @GetMapping("/editar/{id}")
     public String editar(@PathVariable Integer id, Model model) {
         model.addAttribute("distrito", distritoService.obtenerDistritoPorId(id));
         model.addAttribute("content", "distrito/form");
         model.addAttribute("actionUrl", "/distrito/actualizar");
         return "layout";
     }
-    
-    
+
     @PostMapping("/actualizar")
     public String actualizarDistrito(@ModelAttribute Distrito distrito, Model model) {
-        distritoService.actualizarDistrito(distrito.getIdDistrito(), distrito.getNombre(),distrito.getIdCanton(), distrito.getIdEstado());
+        distritoService.actualizarDistrito(distrito.getIdDistrito(), distrito.getNombre(), distrito.getIdCanton(), distrito.getIdEstado());
         return "redirect:/direccion";
     }
-    
-     @GetMapping("/eliminar/{id}")
+
+    @GetMapping("/eliminar/{id}")
     public String eliminarDistrito(@PathVariable Integer id, Model model) {
         distritoService.eliminarDistrito(id);
         return "redirect:/direccion";
     }
-    
-     
-    
+
 }
